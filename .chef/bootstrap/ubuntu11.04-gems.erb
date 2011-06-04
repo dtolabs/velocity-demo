@@ -1,0 +1,38 @@
+bash -c '
+if [ ! -f /usr/bin/chef-client ]; then
+  apt-get update
+  apt-get install -y ruby ruby-dev build-essential wget libruby-extras
+  cd /tmp
+  wget http://production.cf.rubygems.org/rubygems/rubygems-1.7.2.tgz
+  tar zxf rubygems-1.7.2.tgz
+  cd rubygems-1.7.2
+  ruby setup.rb --no-format-executable
+fi
+
+gem install ohai --no-rdoc --no-ri --verbose
+gem install chef --no-rdoc --no-ri --verbose <%= bootstrap_version_string %>
+
+mkdir -p /etc/chef
+
+(
+cat <<'EOP'
+<%= validation_key %>
+EOP
+) > /tmp/validation.pem
+awk NF /tmp/validation.pem > /etc/chef/validation.pem
+rm /tmp/validation.pem
+
+(
+cat <<'EOP'
+<%= config_content %>
+EOP
+) > /etc/chef/client.rb
+
+(
+cat <<'EOP'
+<%= { "run_list" => @run_list }.to_json %>
+EOP
+) > /etc/chef/first-boot.json
+
+echo -e <%= start_chef %>
+/usr/bin/chef-client -j /etc/chef/first-boot.json'

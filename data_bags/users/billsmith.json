@@ -1,0 +1,15 @@
+    {
+      "id": "billsmith",
+      "ssh_keys": "",
+      "groups": "sysadmin",
+      "uid": 2004,
+      "shell": "\/bin\/bash",
+      "comment": " Bill Smith",
+      "nagios": {
+        "pager": "9192449680@txt.att.net",
+        "email": "billsmith@opscode.com"
+      },
+      "openid": "billsmith.myopenid.com"
+    }
+
+

@@ -1,0 +1,17 @@
+require 'tempfile'
+
+set(:nodelist) do
+  Capistrano::CLI.ui.ask "Node list: "
+end unless exists?(:nodelist)
+
+nodelist.split.each do |node|
+  role :nodes, node, :ssh_options => {:user => "ubuntu", :keys => "~/chef-repo/.chef/botchagalupe.pem"}
+end
+
+task :default do
+  pwhash = "$1$xMc08XfL$b4aNqWyrFB3yg3S3oJo2m0"
+  sudo "usermod -p '#{pwhash}' ubuntu"
+  sudo "sed -i 's/^PasswordAuthentication no$/PasswordAuthentication yes/' /etc/ssh/sshd_config"
+  sudo "/etc/init.d/ssh restart"
+end
+

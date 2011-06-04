@@ -1,0 +1,14 @@
+    {
+      "id": "ronnyjones",
+      "ssh_keys": "",
+      "groups": "sysadmin",
+      "uid": 2002,
+      "shell": "\/bin\/bash",
+      "comment": "Ronny Jones",
+      "nagios": {
+        "pager": "9192449680@txt.att.net",
+        "email": "rjones@opscode.com"
+      },
+      "openid": "rjones.myopenid.com"
+    }
+

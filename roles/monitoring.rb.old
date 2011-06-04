@@ -1,0 +1,14 @@
+name "monitoring"
+  description "nagios node"
+  run_list(
+    "role[production]",
+    "role[base]",
+    "recipe[nagios::server]"
+)
+
+default_attributes(
+  "nagios" => {
+    "server_auth_method" => "htauth"
+  }
+)
+

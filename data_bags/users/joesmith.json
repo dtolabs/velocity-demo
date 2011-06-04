@@ -1,0 +1,15 @@
+    {
+      "id": "joesmith",
+      "ssh_keys": "",
+      "groups": "sysadmin",
+      "uid": 2003,
+      "shell": "\/bin\/bash",
+      "comment": "Ronny Jones",
+      "nagios": {
+        "pager": "9192449680@txt.att.net",
+        "email": "joesmith@opscode.com"
+      },
+      "openid": "joesmithj.myopenid.com"
+    }
+
+
