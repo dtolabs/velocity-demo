@@ -1,4 +1,5 @@
 # Noah server
 =============
-` knife ec2 server create -r "recipe[noah::server]" -I ami-e2af508b -f m1.small -G rundeck-demo -S rundeck-demo -i .chef/rundeck-demo.pem -x ubuntu -d ubuntu11.04-gems -N noah`
-* Uses a custom natty bootstrap template
+This doesn't appear to be working right now - can't ssh in
+`knife ec2 server create -r "recipe[noah::server]" -I ami-e2af508b -f m1.small -S rundeck-demo -G default,rundeck-demo -i .chef/rundeck-demo.pem -x ubuntu -d ubuntu11.04-gems -N noah`
+* Uses a custom natty bootstrap template that we use at work for Natty boxes
