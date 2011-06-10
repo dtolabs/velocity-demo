@@ -4,8 +4,12 @@ This cookbook has been tested on the following platforms (for installing the ser
 
 * Natty 32-bit Rubygems install
 * Natty 64-bit Rubygems install
+* Lucid 32-bit Vagrant
+* Lucid 64-bit Vagrant
 
 Right now, only the ubuntu-related stuff is really stubbed out. Init script templates for redhat and non-upstart debian need to be written.
+The init scripts should be resilient enough to get populated with the proper path to the noah binscript. It uses `Gem.bin_path` to get it.
+The main reason for this is working around system rubies that do stupid crap like dump binaries in `/var/lib/gems/bin` or something.
 
 If you want to test it, the recipe you want is `noah::server`.
 
@@ -86,3 +90,7 @@ The exception to a `:pass` is when the data doesn't match. It makes no sense to 
 # Test Suite
 There's a small "test suite" of recipes included. If you include `noah::test` in your run\_list, it will perform a series of tests that ensure some basic functionality. The last test to run is for `noah_block` and it's designed to test proper failure. This test suite will fail intentionally at the end if everything is working properly.
 
+# TODO
+- The whole 'who the hell is my Noah server?' needs to be allowed to be based of a role.
+- DRY the code out.
+- ??????????
