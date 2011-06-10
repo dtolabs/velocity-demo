@@ -13,5 +13,6 @@ description "Base role applied to all nodes."
       "recipe[motd]",
       "recipe[chef-client::service]",
       "recipe[nagios::client]",
-      "recipe[munin::client]"
+      "recipe[munin::client]",
+      "recipe[noah]"
 )
